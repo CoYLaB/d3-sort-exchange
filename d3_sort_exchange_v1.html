@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Exchange Sort v1</title>
+		<script type="text/javascript" src="https://d3js.org/d3.v3.js"></script>
+		<style type="text/css">
+			#controller, #barsSlider {
+				width: 80%;
+			}
+			* {
+				box-sizing: border-box;
+			}
+    			.table {
+        				display: table;
+				width: 100%;
+				padding-bottom: 25px;
+    			}
+    			.row {
+        				display: table-row;
+    			}
+			.column {
+				display: table-cell;
+  				float: left;
+  				padding: 10px;
+			}
+			.bigo {
+				font-style: italic;
+				font-weight: normal;
+				font-size: 20px;
+			}
+			.algo_type {
+				font-weight: bold;
+				font-size: 23px;
+			}
+			.algo_name {
+				font-weight: normal;
+				font-size: 20px;
+			}			
+		</style>
+	</head>
+	<body>
+		<div class="table">
+			<div class="row">
+				<div class="column" style="width:50%">
+					<h1>Exchange Sort <span class="bigo">O(n<sup>2</sup>)</span><br><span class="algo_type">Algorithm: </span><span class="algo_name">Lowest</span></h1>
+				</div>
+				<div class="column" style="width:50%">
+					<div class="table" style="padding-bottom:0">
+						<div class="row">
+							<div class="column" style="width:40%"><b>Scan Delay</b></div>
+							<div class="column" style="width:60%">
+								<input id="scanSlider" type="range" name="scanSpeed" list="ticks_scan" min="50" max="300" value="75" label="Scan Speed" style="width:80%">
+  								<output id="scanValue">50</output>
+								<datalist id="ticks_scan">
+									<option>50</option>
+	  								<option>75</option>
+  									<option>150</option>
+									<option>300</option>
+								</datalist>
+							</div>
+						</div>
+						<div class="row">
+							<div class="column" style="width:40%"><b>Transition Delay</b></div>
+							<div class="column" style="width:60%">
+								<input id="animationSlider" type="range" name="transitionSpeed" list="ticks_transition" min="300" max="1000" value="300" label="Transition Speed" style="width:80%">
+  								<output id="animationValue">300</output>
+								<datalist id="ticks_transition">
+									<option>300</option>
+	  								<option>600</option>
+  									<option>750</option>
+									<option>1000</option>
+								</datalist>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+  				<div class="column" style="width:50%">
+					<div><b>Number Bars</b></div>
+					<div>
+						<input id="barsSlider" type="range" name="noBars" list="ticks" min="5" max="50" value="50" label="Number Bars">
+  						<output id="barsValue">50</output>
+						<datalist id="ticks">
+							<option>5</option>
+	  						<option>10</option>
+  							<option>25</option>
+							<option>50</option>
+						</datalist>
+					</div>
+					<div id="controller">
+						<button id="start">Start</button>
+						<button id="random" style="float:right">Randomise</button>
+					</div>
+  				</div>
+				<div class="column" style="width:50%">
+					<div class="table" style="padding-bottom:0">
+						<div class="row">
+							<div class="column" style="width:30%">
+								<div><b>Duration</b>:</div>
+								<div><b>Comparisons</b>:</div>
+								<div><b>Swaps</b>:</div>
+							</div>
+							<div class="column" style="width:30%">
+								<div><output id="durationValue"></output></div>
+								<div><output id="compValue"></output></div>
+								<div><output id="swapValue"></div>
+							</div>
+							<div class="column" style="width:20%">
+								<div><b>Reads</b>:</div>
+								<div><b>Writes</b>:</div>
+								<div><b>Accesses</b>:</div>
+							</div>
+							<div class="column" style="width:20%">
+								<div><output id="readValue"></output></div>
+								<div><output id="wriValue"></output></div>
+								<div><output id="accValue"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="./d3_sort_common.js"></script>
+		<script type="text/javascript" src="./d3_sort_ui.js"></script>
+		<script type="text/javascript" src="./d3_sort_animation.js"></script>
+		<script type="text/javascript">
+
+			// --------------------------------------------
+			// FILE
+			// --------------------------------------------
+			// d3_sort_exchange_v1.html
+			//
+			// DESCRIPTION
+			// --------------------------------------------
+			// D3.js visualisation of the exchange sort
+			// algorithm.
+			//
+			// AVAILABLE VERSIONS
+			// --------------------------------------------
+			// 1		Lowest value search
+			// 2		Highest value search
+			// 3 		Lowest & highest values search
+			//
+			// HISTORY
+			// --------------------------------------------
+			// 2026/01	Initial code
+			//
+			// COMMENT
+			// --------------------------------------------
+			// The exchange sort can be looked at as a more
+			// efficient gnome sort. It can also easily be
+			// optimised leading to the insertion sort.
+			//
+			// REFERENCE
+			// --------------------------------------------
+			// https://en.wikipedia.org/wiki/Exchange_sort
+			// --------------------------------------------
+
+			async function lowestExchangeSort() {
+				var j;
+
+				for (var i=1; i<noData; i++) {
+
+					if (startButton_status == "waiting") {
+						console.log("[lowestExchangeSort] Stop Buttom Clicked: Exiting");
+						break;
+					}
+
+					await highlightColourBar(i, colourScan, true);
+					value = dataset[i];
+					countReads++;
+					countAccesses++;
+					console.log("[lowestExchangeSort] i:" + i + " value[" + i + "]:" + value + " dataset:" + dataset);
+					j = i-1;
+					await highlightColourBar(i, colourScan, false);
+					while ((j>=0) && dataset[j]>value) {
+
+						if (startButton_status == "waiting") {
+							console.log("[lowestSelectionSort] Stop Buttom Clicked: Exiting");
+							break;
+						}
+
+						animationCount += 2;
+						swapBars(j, j+1);
+						await waitAnimationEnd();
+						
+						dataset[j+1] = dataset[j];
+						dataset[j] = value;
+						j--;
+
+						countReads       += 2;
+						countWrites      += 2;
+						countAccesses    += 3;
+						countSwaps       += 2;
+						countComparisons += 1;			
+					}
+					console.log("[lowestExchangeSort] After swap dataset:" + dataset);				
+				}
+			}
+
+			console.group("[Main]");
+			configureSort(lowestExchangeSort);
+			configureUI();
+			startUI();
+			console.groupEnd("[Main]");
+		</script>
+	</body>
+</html>
