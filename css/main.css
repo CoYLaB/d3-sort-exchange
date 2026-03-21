@@ -36,33 +36,37 @@ input:checked + .slider::before {
 * {
   box-sizing: border-box;
 }
-  .table {
-      display: table;
+.table {
+  display: table;
   width: 100%;
   padding-bottom: 25px;
   }
-  .row {
-    display: table-row;
+.row {
+  display: table-row;
 }
 .column {
   display: table-cell;
-    float: left;
-    padding: 10px;
-}
-.bigo {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 20px;
-}
-.algo_type {
-  font-weight: bold;
-  font-size: 23px;
+  float: left;
+  padding: 10px;
 }
 .algo_name {
+  font-size: 32px;
+  font-weight: bold;
+}
+.bigo {
+  font-size: 20px;   
   font-weight: normal;
+  font-style: italic;
+}
+.algo_type {
+  font-size: 23px;
+  font-weight: bold;
+}
+.algo_version {
   font-size: 20px;
+  font-weight: normal;
 }
 .debug {
-  font-weight: bold;
   font-size: 18px;
+  font-weight: bold;
 }
