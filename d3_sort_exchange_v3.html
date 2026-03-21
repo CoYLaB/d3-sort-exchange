@@ -5,6 +5,38 @@
 		<title>Exchange Sort v3</title>
 		<script type="text/javascript" src="https://d3js.org/d3.v3.js"></script>
 		<style type="text/css">
+			/* Hide the default checkbox */
+			.toggle-switch input {
+				display: none;
+			}
+			/* Toggle switch slider */
+			.slider {
+				position: relative;
+				display: inline-block;
+				width: 60px;
+				height: 34px;
+				background-color: #ccc;
+				border-radius: 34px;
+				transition: background-color 0.4s;
+			}
+			.slider::before {
+				content: "";
+				position: absolute;
+				width: 26px;
+				height: 26px;
+				left: 4px;
+				bottom: 4px;
+				background-color: white;
+				border-radius: 50%;
+				transition: transform 0.4s;
+			}
+			/* Toggle switch effect */
+			input:checked + .slider {
+				background-color: #2196F3;
+			}
+			input:checked + .slider::before {
+				transform: translateX(26px);
+			}
 			#controller, #barsSlider {
 				width: 80%;
 			}
