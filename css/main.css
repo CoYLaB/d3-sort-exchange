@@ -6,17 +6,17 @@
 .slider {
   position: relative;
   display: inline-block;
-  width: 24px;
-  height: 14px;
+  width: 30px;
+  height: 18px;
   background-color: #ccc;
-  border-radius: 14px;
+  border-radius: 18px;
   transition: background-color 0.4s;
 }
 .slider::before {
   content: "";
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   left: 2px;
   bottom: 2px;
   background-color: white;
@@ -28,7 +28,7 @@ input:checked + .slider {
   background-color: #2196F3;
 }
 input:checked + .slider::before {
-  transform: translateX(10px);
+  transform: translateX(14px);
 }
 #controller, #barsSlider {
   width: 80%;
