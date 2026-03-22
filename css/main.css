@@ -20,7 +20,7 @@
   left: 2px;
   bottom: 2px;
   background-color: white;
-  border-radius: 50%;
+  border-radius: 25%;
   transition: transform 0.4s;
 }
 /* Toggle switch effect */
