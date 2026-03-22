@@ -14,7 +14,7 @@
 }
 .slider::before {
   content: "";
-  position: relative;
+  position: absolute;
   width: 14px;
   height: 14px;
   left: 2px;
