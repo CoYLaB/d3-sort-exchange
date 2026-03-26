@@ -1,0 +1,106 @@
+.header {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-areas:
+    "title      settings"
+    "controller metrics";
+}
+.header_title {
+   grid-area: title;
+   display: grid;
+   grid-row: span 3;
+   grid-template-columns: 65% 35%;
+   grid-template-rows: subgrid;
+   margin-bottom: 3em;
+   align-items: center;
+   align-self: center;
+}
+.header_settings {
+  grid-area: settings;
+  display: grid;
+  grid-row: span 3;
+  grid-template-columns: 150px auto 50px;
+  grid-template-rows: subgrid;
+  margin-bottom: 3em;
+}
+.header_config {
+  font-weight: bold;
+  align-self: center;
+}
+.header_slider {
+  align-self: center;
+}
+.header_output {
+  align-self: center;
+  justify-self: center;
+}
+.header_controller {
+  grid-area: controller;
+  display: grid;
+  grid-row: span 3;
+  grid-template-columns: auto 50px;
+  grid-template-rows: subgrid;
+}
+.header_metrics {
+  grid-area: metrics;
+  display: grid;
+  grid-row: span 3;
+  grid-template-columns: 30% 30% 20% 20%;
+  align-items: center;
+}
+.algo_name {
+  font-size: 32px;
+  font-weight: bold;
+}
+.bigo {
+  font-size: 20px;   
+  font-weight: normal;
+  font-style: italic;
+  align-items: center;
+}
+.algo_type {
+  font-size: 23px;
+  font-weight: bold;
+}
+.algo_version {
+  font-size: 20px;
+  font-weight: normal;
+}
+.debug {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Hide the default checkbox */
+.toggle-switch input {
+  display: none;
+}
+/* Toggle switch slider */
+.slider {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  top: 2px;
+  background-color: #ccc;
+  border-radius: 22px;
+  transition: background-color 0.4s;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+/* Toggle switch effect */
+input:checked + .slider {
+  background-color: #2196F3;
+}
+input:checked + .slider::before {
+  transform: translateX(18px);
+}
