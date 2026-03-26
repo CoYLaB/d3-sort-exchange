@@ -11,7 +11,7 @@
    grid-row: span 3;
    grid-template-columns: 65% 35%;
    grid-template-rows: subgrid;
-   margin-bottom: 3em;
+   margin-bottom: 2em;
    align-items: center;
    align-self: center;
 }
@@ -21,7 +21,7 @@
   grid-row: span 3;
   grid-template-columns: 150px auto 50px;
   grid-template-rows: subgrid;
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }
 .header_config {
   font-weight: bold;
@@ -40,7 +40,7 @@
   grid-row: span 3;
   grid-template-columns: auto 50px;
   grid-template-rows: subgrid;
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 }
 .header_metrics {
   grid-area: metrics;
@@ -48,7 +48,7 @@
   grid-row: span 3;
   grid-template-columns: 30% 30% 20% 20%;
   align-items: center;
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 }
 .algo_name {
   font-size: 32px;
