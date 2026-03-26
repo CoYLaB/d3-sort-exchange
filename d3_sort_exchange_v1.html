@@ -4,92 +4,81 @@
 		<meta charset="utf-8">
 		<title>Exchange Sort v1</title>
 		<script type="text/javascript" src="https://d3js.org/d3.v3.js"></script>
-		<link rel="stylesheet" href="./css/main.css">
+		<link rel="stylesheet" href="./css/main2.css">
 	</head>
 	<body>
-		<div class="table">
-			<div class="row">
-				<div class="column" style="width:50%">
-					<h1>Exchange Sort <span class="bigo">O(n<sup>2</sup>)</span><br>
-					<span class="algo_type">Algorithm: </span><span class="algo_version">Lowest</span><br>
-					<span class="debug">Debug: </span><label class="toggle-switch"><input type="checkbox" name="featureToggle"><span class="slider"></span></label>
-					</h1>
+		<div class="header">
+
+			<div class="header_title">
+				<div class="algo_name">Exchange Sort</div><div class="bigo">O(n<sup>2</sup>)</div>
+				<div class="algo_type">Algorithm</div><div class="algo_version">Lowest</div>
+		     	<div class="debug">Debug</div>
+		     	<div class="toggle-switch"">
+		       		<label><input id="debugToggle" type="checkbox" name="debugValue"><span class="slider"></span></label>
+		     	</div>
+		  	</div>
+		
+		  	<div class="header_settings">
+		    	<div class="header_config">Scan Delay</div>
+		    	<div class="header_slider">
+		      		<input style="width:100%" id="scanSlider" type="range" name="scanSpeed" list="ticks_scan" min="50" max="300" value="75" label="Scan Speed" width="100%">
+		  			<datalist id="ticks_scan">
+	          			<option>50</option>
+	          			<option>75</option>
+						<option>150</option>
+		          		<option>300</option>
+		        	</datalist>  
+		    	</div>
+		    	<div class="header_output"><output id="scanValue">50</output></div>
+		    
+				<div class="header_config">Transition Speed</div>
+		    	<div class="header_slider">
+		  			<input style="width:100%" id="animationSlider" type="range" name="transitionSpeed" list="ticks_transition" min="300" max="1000" value="300" label="Transition Speed">
+	        		<datalist id="ticks_transition">
+	          			<option>300</option>
+			       		<option>600</option>
+		      			<option>750</option>
+	          			<option>1000</option>
+	    			</datalist>
 				</div>
-				<div class="column" style="width:50%">
-					<div class="table" style="padding-bottom:0">
-						<div class="row">
-							<div class="column" style="width:40%"><b>Scan Delay</b></div>
-							<div class="column" style="width:60%">
-								<input id="scanSlider" type="range" name="scanSpeed" list="ticks_scan" min="50" max="300" value="75" label="Scan Speed" style="width:80%">
-  								<output id="scanValue">50</output>
-								<datalist id="ticks_scan">
-									<option>50</option>
-	  								<option>75</option>
-  									<option>150</option>
-									<option>300</option>
-								</datalist>
-							</div>
-						</div>
-						<div class="row">
-							<div class="column" style="width:40%"><b>Transition Delay</b></div>
-							<div class="column" style="width:60%">
-								<input id="animationSlider" type="range" name="transitionSpeed" list="ticks_transition" min="300" max="1000" value="300" label="Transition Speed" style="width:80%">
-  								<output id="animationValue">300</output>
-								<datalist id="ticks_transition">
-									<option>300</option>
-	  								<option>600</option>
-  									<option>750</option>
-									<option>1000</option>
-								</datalist>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div class="header_output"><output id="animationValue">300</output></div>
+		    
 			</div>
-			<div class="row">
-  				<div class="column" style="width:50%">
-					<div><b>Number Bars</b></div>
-					<div>
-						<input id="barsSlider" type="range" name="noBars" list="ticks" min="5" max="50" value="50" label="Number Bars">
-  						<output id="barsValue">50</output>
-						<datalist id="ticks">
-							<option>5</option>
-	  						<option>10</option>
-  							<option>25</option>
-							<option>50</option>
-						</datalist>
-					</div>
-					<div id="controller">
-						<button id="start">Start</button>
-						<button id="random" style="float:right">Randomise</button>
-					</div>
-  				</div>
-				<div class="column" style="width:50%">
-					<div class="table" style="padding-bottom:0">
-						<div class="row">
-							<div class="column" style="width:30%">
-								<div><b>Duration</b>:</div>
-								<div><b>Comparisons</b>:</div>
-								<div><b>Swaps</b>:</div>
-							</div>
-							<div class="column" style="width:30%">
-								<div><output id="durationValue"></output></div>
-								<div><output id="compValue"></output></div>
-								<div><output id="swapValue"></div>
-							</div>
-							<div class="column" style="width:20%">
-								<div><b>Reads</b>:</div>
-								<div><b>Writes</b>:</div>
-								<div><b>Accesses</b>:</div>
-							</div>
-							<div class="column" style="width:20%">
-								<div><output id="readValue"></output></div>
-								<div><output id="wriValue"></output></div>
-								<div><output id="accValue"></div>
-							</div>
-						</div>
-					</div>
-				</div>
+		
+			<div class="header_controller">
+    			<div><b>Number Bars</b></div>
+				<div></div>
+    			<div class="header_slider">
+      				<input style="width:100%" id="barsSlider" type="range" name="noBars" list="ticks" min="5" max="50" value="50" label="Number Bars">
+        			<datalist id="ticks">
+          				<option>5</option>
+          				<option>10</option>
+          				<option>25</option>
+          				<option>50</option>
+        			</datalist>
+    			</div>
+    			<div class="header_output"><output id="barsValue">50</output></div>
+    			<div id="controller">
+      				<div>
+        				<button id="start">Start</button>
+        				<button id="random" style="float:right">Randomise</button>
+      				</div>
+    			</div>
+  			</div>
+
+			<div class="header_metrics">
+    			<div><b>Duration</b>:</div>
+			    <div class="header_output"><output id="durationValue"></output></div>
+			    <div><b>Reads</b>:</div>
+			    <div class="header_output"><output id="readValue"></output></div>
+			    <div><b>Comparisons</b>:</div>
+			    <div class="header_output"><output id="compValue"></output></div>
+			    <div><b>Writes</b>:</div>
+			    <div class="header_output"<output id="wriValue"></output></div>
+			    <div><b>Swaps</b>:</div>
+			    <div class="header_output"><output id="swapValue"></div>
+			    <div><b>Accesses</b>:</div>
+			    <div class="header_output"><output id="accValue"></div>
 			</div>
 		</div>
 		<script type="text/javascript" src="../d3-sort-utils/d3_sort_common.js"></script>
@@ -116,6 +105,7 @@
 			// HISTORY
 			// --------------------------------------------
 			// 2026/01	Initial code
+			// 2026/03  CSS Grid UI
 			//
 			// COMMENT
 			// --------------------------------------------
@@ -175,6 +165,7 @@
 			configureUI();
 			startUI();
 			console.groupEnd("[Main]");
+			configureLogging();
 		</script>
 	</body>
 </html>
