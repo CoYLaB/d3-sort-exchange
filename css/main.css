@@ -40,6 +40,7 @@
   grid-row: span 3;
   grid-template-columns: auto 50px;
   grid-template-rows: subgrid;
+  margin-bottom: 2em;
 }
 .header_metrics {
   grid-area: metrics;
@@ -47,6 +48,7 @@
   grid-row: span 3;
   grid-template-columns: 30% 30% 20% 20%;
   align-items: center;
+  margin-bottom: 2em;
 }
 .algo_name {
   font-size: 32px;
