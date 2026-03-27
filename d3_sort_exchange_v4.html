@@ -95,9 +95,6 @@
 		<script type="text/javascript" src="../d3-sort-utils/d3_sort_animation.js"></script>
 <!--		<script type="module" src="../d3-sort-utils/modules/d3_sort_algo.js"></script> -->
 		<script type="module">
-			import { lowestExchangeSort, highestExchangeSort } from "../d3-sort-utils/modules/d3_sort_algo.js";
-		</script>
-		<script type="text/javascript">
 			// --------------------------------------------
 			// FILE
 			// --------------------------------------------
@@ -129,7 +126,8 @@
 			// --------------------------------------------
 			// https://en.wikipedia.org/wiki/Exchange_sort
 			// --------------------------------------------
-			
+
+			import { lowestExchangeSort, highestExchangeSort } from "../d3-sort-utils/modules/d3_sort_algo.js";			
 			algoConfig = {
 				divAlgoName: "Search",
 				leftLabel: "Lowest",
